@@ -188,9 +188,9 @@ public class QRCodeReaderView extends SurfaceView implements SurfaceHolder.Callb
                  * Variables For Video Capturing
                  */
                 Utils.showLog(TAG, "Creating Frame To Store Video Data & Provide To Recorder");
-                yuvImage = new Frame(getWidth(), getHeight(), Frame.DEPTH_UBYTE, 2);
+                yuvImage = new Frame(getHeight(), getWidth(), Frame.DEPTH_UBYTE, 2);
                 Utils.showLog(TAG, "Initializing FFmpegFrameRecorder");
-                recorder = new FFmpegFrameRecorder(getFilePath(), getWidth(), getHeight(), 1);
+                recorder = new FFmpegFrameRecorder(getFilePath(), getHeight(), getWidth(), 1);
                 Utils.showLog(TAG, "Setting Format Of FFmpegFrameRecorder");
                 recorder.setFormat("mp4");
                 Utils.showLog(TAG, "Setting Sample Rate Of FFmpegFrameRecorder");
