@@ -504,8 +504,6 @@ public class QRCodeReaderView extends SurfaceView implements SurfaceHolder.Callb
                         Utils.showLog(TAG, "Image Data Length : " + data.length);
                         Utils.showLog(TAG, "Buffer  Length : " + yuvImage.image[0].position(0).capacity());
                         ((ByteBuffer) yuvImage.image[0].position(0)).put(data);
-                        Frame toBeCapturedFrame = new Frame(getWidth(), getHeight(), Frame.DEPTH_UBYTE, 2);
-                        ((ByteBuffer) toBeCapturedFrame.image[0].position(0)).put(data);
                         try
                             {
                                 Utils.showLog(TAG, "Writing Frame");
@@ -514,7 +512,7 @@ public class QRCodeReaderView extends SurfaceView implements SurfaceHolder.Callb
                                     {
                                         recorder.setTimestamp(t);
                                     }
-                                recorder.record(toBeCapturedFrame);
+                                recorder.record(yuvImage);
 
                             } catch (FFmpegFrameRecorder.Exception e)
                             {
